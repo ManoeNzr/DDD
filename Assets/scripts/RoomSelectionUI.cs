@@ -7,6 +7,7 @@ public class RoomSelectionUI : MonoBehaviour
 {
     public Button[] roomButtons;
     public RoomManager roomManager;
+    public ScreenFader screenfader;
 
     void OnEnable()
     {
@@ -15,14 +16,22 @@ public class RoomSelectionUI : MonoBehaviour
         for (int i = 0; i < roomButtons.Length; i++)
         {
             int index = i;
-            roomButtons[i].GetComponentInChildren<TMP_Text>().text = options[i].roomPrefab.name;
+            roomButtons[i].GetComponentInChildren<TMPro.TMP_Text>().text = options[i].roomPrefab.name;
             roomButtons[i].onClick.RemoveAllListeners();
-            roomButtons[i].onClick.AddListener(() => {
-                roomManager.SpawnRoom(options[index].roomPrefab);
-                gameObject.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                // Time.timeScale = 1;
+            roomButtons[i].onClick.AddListener(() =>
+            {
+                ScreenFader fader = screenfader;   
+                void OnBlack()
+                {                 
+                    Cursor.lockState = CursorLockMode.Locked;
+                    roomManager.SpawnRoom(options[index].roomPrefab);
+                    gameObject.SetActive(false);                 
+                    fader.OnFadeToBlack -= OnBlack;
+                }              
+                fader.OnFadeToBlack += OnBlack;            
+                fader.StartFade();
             });
         }
+
     }
 }
