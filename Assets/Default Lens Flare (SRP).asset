@@ -499,7 +499,7 @@ MonoBehaviour:
     blendMode: 0
     autoRotate: 1
     flareType: 1
-    modulateByLightColor: 0
+    modulateByLightColor: 1
     isFoldOpened: 1
     distribution: 1
     lengthSpread: 1
@@ -640,8 +640,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 1
-    m_FallOff: 0.8
-    m_EdgeOffset: 0.6
+    m_FallOff: 0.796
+    m_EdgeOffset: 0.56
     m_SideCount: 6
     m_SdfRoundness: 0
     inverseSDF: 0
@@ -933,7 +933,7 @@ MonoBehaviour:
       colorSpace: -1
     blendMode: 0
     autoRotate: 1
-    flareType: 2
+    flareType: 1
     modulateByLightColor: 0
     isFoldOpened: 0
     distribution: 2
@@ -1341,7 +1341,7 @@ MonoBehaviour:
       colorSpace: -1
     blendMode: 0
     autoRotate: 1
-    flareType: 1
+    flareType: 2
     modulateByLightColor: 0
     isFoldOpened: 0
     distribution: 1
