@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class RoomManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class RoomManager : MonoBehaviour
     public Transform player;
     public List<RoomData> allRooms;
     public GameObject currentRoom;
+
+    public TMP_Text roomCounterText; 
+    public int currentRoomIndex { get; private set; } = 0;
 
     void Awake()
     {
@@ -50,7 +54,7 @@ public class RoomManager : MonoBehaviour
         currentRoom.SetActive(true);
 
         Transform entry = currentRoom.transform.Find("EntryPoint");
-  
+
         var controller = player.GetComponent<CharacterController>();
         if (controller != null)
         {
@@ -62,6 +66,23 @@ public class RoomManager : MonoBehaviour
         {
             player.position = entry.position;
         }
+
+        currentRoomIndex++;
+        UpdateRoomText();
     }
 
+    public void ResetRoomCount()
+    {
+        currentRoomIndex = 0;
+        UpdateRoomText();
+        //Debug.Log("Compteur de salles réinitialisé à 0.");
+    }
+
+    void UpdateRoomText()
+    {
+        if (roomCounterText != null)
+        {
+            roomCounterText.text = $"Room : {currentRoomIndex}";
+        }
+    }
 }

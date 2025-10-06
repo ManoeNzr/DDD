@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class RoomSelectionUI : MonoBehaviour
@@ -8,6 +9,8 @@ public class RoomSelectionUI : MonoBehaviour
     public Button[] roomButtons;
     public RoomManager roomManager;
     public ScreenFader screenfader;
+
+    //public InputActionAsset inputActions;
 
     void OnEnable()
     {
@@ -28,7 +31,9 @@ public class RoomSelectionUI : MonoBehaviour
                     gameObject.SetActive(false);                 
                     fader.OnFadeToBlack -= OnBlack;
                 }              
-                fader.OnFadeToBlack += OnBlack;            
+                fader.OnFadeToBlack += OnBlack;
+                // inputActions.FindActionMap("Player").Enable();
+                Time.timeScale = 1f;
                 fader.StartFade();
             });
         }

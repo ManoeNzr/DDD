@@ -7,6 +7,9 @@ public class RoomDoor : MonoBehaviour
     public GameObject uiCanvasE;
     private bool playerInRange;
 
+
+    //public InputActionAsset inputActions;
+
     void Update()
     {
         if (playerInRange)
@@ -14,14 +17,14 @@ public class RoomDoor : MonoBehaviour
             uiCanvasE.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E)) { uiCanvas.SetActive(!uiCanvas.activeSelf); }
             
-           // Time.timeScale = 0;
+            
         }
         else { uiCanvas.SetActive(false); uiCanvasE.SetActive(false); }
 
 
         if (uiCanvas.activeSelf)
-        { Cursor.lockState = CursorLockMode.None; uiCanvasE.SetActive(false); }
-        else { Cursor.lockState = CursorLockMode.Locked; }
+        { Cursor.lockState = CursorLockMode.None; Cursor.visible = true; uiCanvasE.SetActive(false); }
+        else { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; }
 
     }
 
